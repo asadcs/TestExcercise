@@ -52,11 +52,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CollegeDbContext.cs" />
-    <Compile Include="Interfaces\ICourseRepository.cs" />
-    <Compile Include="Interfaces\ISubjectRepository.cs" />
-    <Compile Include="Interfaces\ITeacherRepository.cs" />
+    <Compile Include="Migrations\202310131941172_CollegeDB.cs" />
+    <Compile Include="Migrations\202310131941172_CollegeDB.designer.cs">
+      <DependentUpon>202310131941172_CollegeDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\CourseRepository.cs" />
+    <Compile Include="Repositories\GradeRepository.cs" />
+    <Compile Include="Repositories\StudentRepositoy.cs" />
+    <Compile Include="Repositories\SubjectRepository.cs" />
+    <Compile Include="Repositories\TeacherRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -68,7 +74,11 @@
       <Name>ExcerciseApp.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202310131941172_CollegeDB.resx">
+      <DependentUpon>202310131941172_CollegeDB.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

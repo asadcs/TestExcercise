@@ -10,7 +10,7 @@ namespace ExcerciseApp.Infrastructure
 {
     public class CollegeDbContext : DbContext
     {
-        public CollegeDbContext() : base("name=CollegeDbContext")
+        public CollegeDbContext() : base("CollegeDBConnectionString")
         {
         }
 

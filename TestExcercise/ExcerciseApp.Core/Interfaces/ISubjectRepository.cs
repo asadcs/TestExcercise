@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExcerciseApp.Infrastructure.Interfaces
+namespace ExcerciseApp.Core.Interfaces
 {
     public interface ISubjectRepository
     {

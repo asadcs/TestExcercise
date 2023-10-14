@@ -1,33 +1,52 @@
 ﻿using ExcerciseApp.Core.Entities;
+using ExcerciseApp.Core.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ExcerciseApp.Infrastructure.Repositories
 {
-    public class CourseRepository
+    public class CourseRepository : ICourseRepository
     {
-        private readonly CollegeDbContext context;
+        private CollegeDbContext context;
 
-        public CourseRepository()
+        public CourseRepository(CollegeDbContext dbContext)
         {
-            context = new CollegeDbContext();
+            context = dbContext;
         }
 
-        public List<Course> GetAllCourses()
+        public IEnumerable<Course> GetAll()
         {
             return context.Courses.ToList();
         }
 
-        public void AddCourse(Course course)
+        public Course GetById(int id)
         {
-            context.Courses.Add(course);
-            context.SaveChanges();
+            return context.Courses.Find(id);
         }
 
-        // Implement Update and Delete methods as needed.
+        public void Add(Course course)
+        {
+            context.Courses.Add(course);
+        }
+
+        public void Update(Course course)
+        {
+            context.Entry(course).State = EntityState.Modified;
+        }
+
+        public void Delete(int id)
+        {
+            var course = GetById(id);
+            if (course != null)
+            {
+                context.Courses.Remove(course);
+            }
+        }
     }
+
 
 }
